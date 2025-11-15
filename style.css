@@ -1,0 +1,373 @@
+:root {
+    --primary-color: #5d4037; /* Marron foncé/sépia, couleur de livre ancien */
+    --secondary-color: #ffcc80; /* Beige/Jaune clair pour les accents */
+    --bg-color: #f8f8f8;
+    --text-color: #333333;
+    --font-serif: 'Georgia', serif;
+    --font-sans: 'Arial', sans-serif;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* -------------------------------------------------- */
+/* GLOBALE & TYPOGRAPHIE */
+/* -------------------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+h1, h2 {
+    font-family: var(--font-serif); 
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* -------------------------------------------------- */
+/* HEADER & NAVIGATION */
+/* -------------------------------------------------- */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    font-size: 1.8em;
+    color: white;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+header nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* -------------------------------------------------- */
+/* BOUTONS & FORMULAIRES */
+/* -------------------------------------------------- */
+
+button, .button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover, .button:hover {
+    background-color: #6d4c41;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: scale(0.98); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* --- LARGEUR UNIFORME : TOUS LES CHAMPS ADMIN À 350px MAX --- */
+.form-group input:not([type="submit"]):not([type="button"]), 
+.form-group textarea, 
+.form-group select {
+    width: 100%; 
+    max-width: 350px; /* LARGEUR COMPACTE DEMANDÉE */
+    
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 1em;
+}
+
+.form-group textarea {
+    max-width: 700px; /* La description est une exception */
+    min-height: 120px;
+}
+/* --------------------------------------------------------- */
+
+.form-group input:focus, 
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px rgba(255, 204, 128, 0.5); 
+    outline: none;
+}
+
+/* --- ALIGNEMENT SPÉCIFIQUE DES FORMULAIRES (max-width du conteneur) --- */
+/* S'applique aux formulaires de admin.php, lecteurs.php et emprunts.php grâce au conteneur <div> autour de <form> */
+
+.admin-section form[action="emprunts.php"],
+.admin-section > div[style="max-width: 350px;"] > form {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;
+    max-width: 350px; /* Le conteneur entier est limité à 350px */
+    margin: 0; 
+}
+
+/* -------------------------------------------------- */
+
+
+/* -------------------------------------------------- */
+/* SECTIONS ET MESSAGES */
+/* -------------------------------------------------- */
+.admin-section {
+    background: white; 
+    padding: 30px; 
+    border-radius: 8px; 
+    box-shadow: var(--shadow); 
+    margin-bottom: 30px;
+}
+
+.presentation {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    box-shadow: none;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* -------------------------------------------------- */
+/* STYLES POUR L'ACCUEIL (index.php) */
+/* -------------------------------------------------- */
+
+.hero-banner {
+    /* 🚨 IMPORTANT : Assurez-vous que cette image existe dans votre dossier ou changez le nom ! */
+    background-image: url('library_bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    color: white; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); 
+    min-height: 250px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.hero-banner h2 {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-family: var(--font-serif);
+}
+
+.hero-banner.admin-section {
+    background-color: rgba(0, 0, 0, 0.3); /* Légère surcouche sombre pour le contraste */
+    border: none;
+}
+
+/* --- STYLES POUR LES LIENS RAPIDES (Icônes) --- */
+.quick-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 25px;
+    font-size: 1.1em;
+}
+
+.quick-links p {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+}
+
+.quick-links p a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* -------------------------------------------------- */
+/* PAGE ACCUEIL & RECHERCHE */
+/* -------------------------------------------------- */
+.search-form {
+    text-align: center;
+}
+
+.search-form form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.search-form input[type="text"] {
+    width: 60%;
+    max-width: 600px;
+}
+
+/* -------------------------------------------------- */
+/* CARTES DE LIVRES (results.php) */
+/* -------------------------------------------------- */
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.book-card {
+    background: white;
+    border-left: 5px solid var(--secondary-color);
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out; 
+    border-radius: 8px;
+}
+
+.book-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.exemplaires {
+    font-size: 0.9em;
+    color: green;
+    margin-bottom: 15px;
+}
+
+/* -------------------------------------------------- */
+/* ADMINISTRATION TABLES */
+/* -------------------------------------------------- */
+.admin-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+}
+.admin-table th, .admin-table td { 
+    border: 1px solid #ddd; 
+    padding: 12px; 
+    text-align: left; 
+}
+.admin-table th { 
+    background-color: #f2f2f2; 
+    color: var(--primary-color);
+}
+
+.action-btns a, .action-btns button { 
+    margin-right: 5px;
+    padding: 6px 10px;
+    font-size: 0.9em;
+}
+
+.delete-btn { 
+    background-color: #dc3545; 
+}
+
+/* Styles pour Emprunts et Retours */
+.retard-row {
+    background-color: #ffeaea; 
+    border-left: 5px solid red;
+}
+.rendu-ok-row {
+    background-color: #eaffea; 
+    opacity: 0.8; 
+    border-left: 5px solid green;
+}
+
+
+/* -------------------------------------------------- */
+/* RESPONSIVE DESIGN */
+/* -------------------------------------------------- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    header h1 {
+        margin-bottom: 10px;
+    }
+    header nav {
+        margin-top: 10px;
+    }
+    header nav a {
+        margin: 0 5px 5px 5px;
+        display: inline-block;
+    }
+    
+    .search-form form {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .search-form input[type="text"] {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .details-content {
+        flex-direction: column;
+    }
+    
+    .quick-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* Rendre les tableaux scrollables horizontalement sur petit écran */
+    .admin-table-wrapper { 
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+    }
+    .admin-table {
+        min-width: 700px;
+    }
+}
